@@ -18,7 +18,6 @@ export class ReadyListener extends Listener {
     public async run(message: Message) {
         // bump通知を実行するかの判定
         if (!message.guild) return;
-        if (message.guildId != config.guildId) return;
         if (message.author.id != config.noticeBump.disboardUserId) return;
         if (!message.embeds) return;
         const botMessageEmbed = message.embeds[0];

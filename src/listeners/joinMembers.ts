@@ -1,6 +1,5 @@
 import {Listener} from "@sapphire/framework";
 import {EmbedBuilder, GuildMember} from "discord.js";
-import config from "../../config.json";
 import {logger} from "../utils/logs";
 
 export class JoinGuildMember extends Listener {
@@ -13,8 +12,6 @@ export class JoinGuildMember extends Listener {
 
 
     public async run(member: GuildMember) {
-        if (member.guild.id != config.guildId) return
-
         const joinTime = member.joinedTimestamp
         if (joinTime == null) {
             logger.info(`Can't get Member(id: ${member.id}) JoinTime.`)
