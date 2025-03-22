@@ -1,9 +1,6 @@
 import {Listener} from "@sapphire/framework";
 import {EmbedBuilder, GuildMember, PartialGuildMember} from "discord.js";
-
 import {date2Timestamp} from "../utils/dateUtil";
-
-import config from "../../config.json";
 import {logger} from "../utils/logs";
 
 export class ExitGuildMember extends Listener {
@@ -15,7 +12,6 @@ export class ExitGuildMember extends Listener {
     }
 
     public async run(member: GuildMember | PartialGuildMember) {
-        if (member.guild.id != config.guildId) return
         const date = new Date().getTime()
         const joinDate = member.joinedTimestamp
 
