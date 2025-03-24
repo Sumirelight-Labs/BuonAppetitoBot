@@ -1,7 +1,6 @@
 import {ApplicationCommandRegistry, Command} from "@sapphire/framework";
 import {EmbedBuilder} from "discord.js";
 import {MessageFlags} from "discord.js";
-import {checkGuild} from "../utils/checkGuild";
 import {logger} from "../utils/logs";
 
 export class AvatarsCommand extends Command {
@@ -24,7 +23,12 @@ export class AvatarsCommand extends Command {
     }
 
     public override async chatInputRun(interaction: Command.ChatInputCommandInteraction) {
-        if (!await checkGuild(interaction)) return;
+        if (!interaction.guild) {
+            await interaction.reply({
+                content: "",
+                flags: [MessageFlags.Ephemeral]
+            })
+        }
 
         let user = interaction.options.getUser('user');
         if (!user) {

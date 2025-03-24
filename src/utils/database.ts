@@ -43,3 +43,25 @@ export async function executeRunQuery(dbPath: string, query: string, params: any
         });
     });
 }
+
+
+export async function executeAllQuery(dbPath: string, query: string, params: any[] = []): Promise<any[]> {
+    return new Promise<any[]>((resolve, reject) => {
+        const db = new sqlite3.Database(dbPath, (err) => {
+            if (err) {
+                logger.error(`Error failed connect database: "${err}"`);
+                reject(err);
+                return;
+            }
+            db.all(query, params, (err, rows) => {
+                if (err) {
+                    logger.error(`Error failed execute query: "${err}"`);
+                    reject(err);
+                } else {
+                    resolve(rows);
+                }
+                db.close();
+            });
+        });
+    });
+}
