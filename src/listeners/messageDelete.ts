@@ -21,7 +21,7 @@ export class ReadyListener extends Listener {
         const guild = message.guild
         if(!guild) return
 
-        const messageChannel = await guild.channels.fetch(config.audit.message.createLogId)
+        const messageChannel = await guild.channels.fetch(config.audit.message.deleteLogID)
 
         if(!messageChannel) {
             logger.error(`Failed to fetch channel.(guild: ${guild.id}, channel: ${config.audit.message.createLogId})`)
