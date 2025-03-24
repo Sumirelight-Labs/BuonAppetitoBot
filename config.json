@@ -2,6 +2,16 @@
   "guildId": "1352249906886213692",
   "moderatorRoleId": "1336353630533582888",
   "defaultAvatarUrl": "https://archive.org/download/discordprofilepictures/discordblue.png",
+  "audit" :{
+    "message": {
+      "createLogId": "1353555895853781093",
+      "editLogID": "",
+      "deleteLogID": ""
+    },
+    "audio": {
+      "_TODO": "todo."
+    }
+  },
   "noticeBump": {
     "disboardUserId": "302050872383242240",
     "bumpRoleId": "1336706491591168061"
